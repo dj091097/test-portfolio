@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhananjay Dadheech - Business Analytics Specialist</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0F172A; /* Tailwind slate-900 */
+            color: #CBD5E1; /* Tailwind slate-300 */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .typed-cursor { /* Style for Typed.js cursor */
+            color: #38BDF8; /* Tailwind sky-400 */
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        /* Custom scrollbar (optional, for aesthetics) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1E293B; /* Tailwind slate-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38BDF8; /* Tailwind sky-400 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0EA5E9; /* Tailwind sky-500 */
+        }
+
+        /* Desktop Timeline Styling */
+        @media (min-width: 768px) { /* md breakpoint */
+            .timeline-container-desktop::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 0;
+                transform: translateX(-50%);
+                width: 3px;
+                height: 100%;
+                background-color: #38BDF8; /* sky-400 */
+                z-index: 1;
+            }
+            .timeline-item-desktop {
+                width: calc(50% - 2rem); /* 2rem for spacing from center line */
+                position: relative;
+                z-index: 2;
+            }
+            .timeline-item-desktop .timeline-icon-desktop {
+                position: absolute;
+                top: 20px; /* Align with card content start */
+                background-color: #0F172A; /* slate-900 - page background */
+                border: 3px solid #38BDF8; /* sky-400 */
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                z-index: 10;
+            }
+            /* Odd items on the left */
+            .timeline-item-desktop:nth-child(odd) {
+                margin-right: auto; /* Pushes item to the left */
+                padding-right: 2rem; /* Space from center line */
+            }
+            .timeline-item-desktop:nth-child(odd) .timeline-icon-desktop {
+                right: -2.6rem; /* (item padding-right) + (half icon width) - adjust for alignment */
+                transform: translateX(50%);
+            }
+             /* Even items on the right */
+            .timeline-item-desktop:nth-child(even) {
+                margin-left: auto; /* Pushes item to the right */
+                padding-left: 2rem; /* Space from center line */
+            }
+            .timeline-item-desktop:nth-child(even) .timeline-icon-desktop {
+                left: -2.6rem; /* (item padding-left) + (half icon width) - adjust for alignment */
+                 transform: translateX(-50%);
+            }
+        }
+         /* Mobile Timeline Styling */
+        .timeline-item-mobile {
+            position: relative;
+            padding-left: 2.5rem; /* Space for line and icon */
+        }
+        .timeline-item-mobile::before { /* Vertical line */
+            content: '';
+            position: absolute;
+            left: 10px; 
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #38BDF8; /* sky-400 */
+        }
+        .timeline-item-mobile .timeline-icon-mobile { /* Dot icon */
+            content: '';
+            position: absolute;
+            left: 0px; 
+            top: 24px; /* Adjust to align with text */
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: #0F172A; /* Page background */
+            border: 3px solid #38BDF8; /* sky-400 */
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item-mobile:first-child::before { top: 24px; } /* Start line from first icon */
+        .timeline-item-mobile:last-child::before { bottom: auto; height: 24px; } /* End line at last icon */
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="relative fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md shadow-lg transition-all duration-300 py-3">
+                                 <!-- ^ Added 'relative' here -->
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">Dhananjay D.</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#hero" class="text-slate-300 hover:text-sky-400 transition">Home</a>
+                <a href="#about" class="text-slate-300 hover:text-sky-400 transition">About</a>
+                <a href="#skills" class="text-slate-300 hover:text-sky-400 transition">Skills</a>
+                <a href="#experience" class="text-slate-300 hover:text-sky-400 transition">Experience</a>
+                <a href="#achievements" class="text-slate-300 hover:text-sky-400 transition">Achievements</a>
+                <a href="#education" class="text-slate-300 hover:text-sky-400 transition">Education</a>
+                <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-md transition font-semibold">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 z-40 md:hidden bg-slate-800 w-full shadow-lg">
+                                 <!-- ^ MODIFIED CLASSES HERE ^ -->
+                                 <!-- 'block' removed initially, 'hidden' kept -->
+                                 <!-- 'absolute top-full left-0 right-0' for positioning -->
+                                 <!-- 'z-40' to be below navbar's z-50 but above content -->
+                                 <!-- 'shadow-lg' for better visual separation -->
+            <a href="#hero" class="block py-3 px-6 text-slate-300 hover:bg-slate-700 hover:text-sky-400 transition">Home</a>
+            <a href="#about" class="block py-3 px-6 text-slate-300 hover:bg-slate-700 hover:text-sky-400 transition">About</a>
+            <a href="#skills" class="block py-3 px-6 text-slate-300 hover:bg-slate-700 hover:text-sky-400 transition">Skills</a>
+            <a href="#experience" class="block py-3 px-6 text-slate-300 hover:bg-slate-700 hover:text-sky-400 transition">Experience</a>
+            <a href="#achievements" class="block py-3 px-6 text-slate-300 hover:bg-slate-700 hover:text-sky-400 transition">Achievements</a>
+            <a href="#education" class="block py-3 px-6 text-slate-300 hover:bg-slate-700 hover:text-sky-400 transition">Education</a>
+            <a href="#contact" class="block py-3 px-6 text-slate-300 hover:bg-slate-700 hover:text-sky-400 transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 md:pt-0">
+        <h1 data-aos="fade-down" class="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4">DHANANJAY DADHEECH</h1>
+        <p data-aos="fade-up" data-aos-delay="200" class="text-xl sm:text-2xl md:text-4xl mb-8">
+            <span class="text-sky-400" id="typed-output"></span>
+        </p>
+        <p data-aos="fade-up" data-aos-delay="400" class="max-w-2xl mx-auto mb-8 text-md sm:text-lg text-slate-300">
+            Leveraging ~4 years of analytics experience to deliver actionable insights, enhance customer experiences, and drive growth with cutting-edge technologies.
+        </p>
+        <div data-aos="fade-up" data-aos-delay="600" class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <a href="#experience" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out">View My Work</a>
+            <a href="resume.pdf" target="_blank" class="border-2 border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out">My Resume</a>
+        </div>
+        <div class="mt-12 space-x-6" data-aos="fade-up" data-aos-delay="700">
+            <a href="https://www.linkedin.com/in/dhananjay-dadheech-850439150" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 transition" aria-label="LinkedIn Profile">
+                <svg class="w-8 h-8 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+            </a>
+            <a href="mailto:iamdhananjay197@gmail.com" class="text-slate-400 hover:text-sky-400 transition" aria-label="Email Dhananjay">
+                <svg class="w-8 h-8 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-16 sm:py-20 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <h2 data-aos="fade-up" class="text-3xl sm:text-4xl font-bold text-center text-white mb-4">About Me</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-10 sm:mb-12" data-aos="fade-up" data-aos-delay="100"></div>
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-12">
+                <div class="md:w-1/3" data-aos="fade-right" data-aos-delay="200">
+                    <!-- IMPORTANT: Replace this placeholder with your actual photo -->
+                    <img src="https://via.placeholder.com/400x400.png?text=Dhananjay+D." alt="Dhananjay Dadheech" class="rounded-lg shadow-2xl mx-auto w-64 h-64 sm:w-80 sm:h-80 object-cover">
+                </div>
+                <div class="md:w-2/3 text-md sm:text-lg text-slate-300 space-y-4" data-aos="fade-left" data-aos-delay="300">
+                    <p>Hello! I'm Dhananjay, a Business Analytics Specialist with a passion for transforming data into actionable insights and driving business growth. With approximately 4 years in the field, I've honed my skills in various analytical domains, from developing sophisticated prediction models to enhancing customer experience through data-driven strategies.</p>
+                    <p>My journey has taken me through impactful roles at dynamic companies like <strong class="text-sky-400">Zepto</strong>, <strong class="text-sky-400">Swiggy</strong>, and <strong class="text-sky-400">Tredence</strong>, where I've had the opportunity to lead projects and contribute to significant business outcomes. I thrive in environments that challenge me to learn and innovate, constantly seeking to leverage cutting-edge technologies to solve complex problems.</p>
+                    <p>I believe in the power of data to tell a story and guide decisions. My approach is rooted in meticulous analysis, creative problem-solving, and a collaborative spirit to achieve shared goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 sm:py-20">
+        <div class="container mx-auto px-6">
+            <h2 data-aos="fade-up" class="text-3xl sm:text-4xl font-bold text-center text-white mb-4">My Arsenal</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-10 sm:mb-12" data-aos="fade-up" data-aos-delay="100"></div>
+            
+            <div class="mb-12" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl sm:text-2xl font-semibold text-white mb-6 text-center md:text-left">Technical Skills</h3>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">SQL</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Excel</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Power BI</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Tableau</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">G-sheet</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Databricks</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Python</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Azure</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">AWS</span>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-xl sm:text-2xl font-semibold text-white mb-6 text-center md:text-left">Analytical Skills</h3>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Impact Sizing</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Dashboarding</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Root Cause Analysis (RCA)</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Pricing</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">AB Testing</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Machine Learning</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Retention</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Acquisition</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Customer Segmentation</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Recommendation Strategy</span>
+                    <span class="bg-slate-700 text-sky-300 py-2 px-4 sm:px-5 rounded-full text-sm sm:text-md font-medium">Supply Chain Analytics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 sm:py-20 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <h2 data-aos="fade-up" class="text-3xl sm:text-4xl font-bold text-center text-white mb-4">Professional Experience</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-10 sm:mb-16" data-aos="fade-up" data-aos-delay="100"></div>
+
+            <!-- Timeline for Desktop -->
+            <div class="hidden md:block relative timeline-container-desktop">
+                <!-- Zepto -->
+                <div class="timeline-item-desktop mb-16" data-aos="fade-right">
+                    <div class="timeline-icon-desktop"></div>
+                    <div class="bg-slate-700 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-sky-400 mb-1">Senior Manager - Analytics</h3>
+                        <p class="text-md sm:text-lg text-white mb-1">Zepto</p>
+                        <p class="text-sm text-slate-400 mb-4">Feb 2024 - Present | Bangalore</p>
+                        <ul class="list-disc list-outside text-slate-300 space-y-2 ml-5 text-sm sm:text-base">
+                            <li>Developed a Vendor Allocation System, increasing Fill Rate by <strong>6-7%</strong>.</li>
+                            <li>Built Fill Rate Master Dashboard with integrated RCA Tracker.</li>
+                            <li>Developed an hourly OOS predictor dashboard, improving availability by <strong>4%</strong>.</li>
+                            <li>Created 10+ Daily Automated Reports for sourcing & pricing.</li>
+                            <li>Developed comprehensive SQL code repositories (Zepto FNV Analytics handbook).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Swiggy -->
+                <div class="timeline-item-desktop mb-16" data-aos="fade-left">
+                     <div class="timeline-icon-desktop"></div>
+                    <div class="bg-slate-700 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-sky-400 mb-1">Business Analyst</h3>
+                        <p class="text-md sm:text-lg text-white mb-1">Swiggy</p>
+                        <p class="text-sm text-slate-400 mb-4">Jan 2022 - Oct 2023 | Bangalore</p>
+                        <ul class="list-disc list-outside text-slate-300 space-y-2 ml-5 text-sm sm:text-base">
+                            <li>Implemented KNN & K-means Clustering for targeted marketing.</li>
+                            <li>Deployed dish recommendation system, boosting CTR by <strong>10%</strong> & CVR by <strong>20%</strong>.</li>
+                            <li>Increased MoM new user retention by <strong>15pp</strong>.</li>
+                            <li>Reduced Incorrect Address Cancellations by <strong>14%</strong>, increasing LTV.</li>
+                            <li>Prevented <strong>₹10 Lakhs loss</strong> via RCA-driven fraud detection.</li>
+                            <li>Crafted Central Growth Summary Dashboard (<strong>1000 monthly views</strong>).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tredence -->
+                <div class="timeline-item-desktop" data-aos="fade-right">
+                    <div class="timeline-icon-desktop"></div>
+                    <div class="bg-slate-700 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-sky-400 mb-1">Analyst (Client Facing - US)</h3>
+                        <p class="text-md sm:text-lg text-white mb-1">Tredence</p>
+                        <p class="text-sm text-slate-400 mb-4">Nov 2020 - Jan 2022 | Bangalore</p>
+                        <ul class="list-disc list-outside text-slate-300 space-y-2 ml-5 text-sm sm:text-base">
+                            <li>Boosted sales by <strong>20%</strong> for a major US fashion retailer using GLM models.</li>
+                            <li>Developed Python tool for Snowflake cost estimation & forecasting.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline for Mobile -->
+            <div class="md:hidden space-y-12">
+                 <!-- Zepto -->
+                <div class="timeline-item-mobile" data-aos="fade-up">
+                    <div class="timeline-icon-mobile"></div>
+                    <div class="bg-slate-700 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-xl font-semibold text-sky-400 mb-1">Senior Manager - Analytics</h3>
+                        <p class="text-md text-white mb-1">Zepto</p>
+                        <p class="text-sm text-slate-400 mb-4">Feb 2024 - Present | Bangalore</p>
+                        <ul class="list-disc list-outside text-slate-300 space-y-2 ml-5 text-sm">
+                            <li>Developed a Vendor Allocation System, increasing Fill Rate by <strong>6-7%</strong>.</li>
+                            <li>Built Fill Rate Master Dashboard with integrated RCA Tracker.</li>
+                            <li>Developed an hourly OOS predictor dashboard, improving availability by <strong>4%</strong>.</li>
+                            <li>Created 10+ Daily Automated Reports for sourcing & pricing.</li>
+                            <li>Developed comprehensive SQL code repositories (Zepto FNV Analytics handbook).</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Swiggy -->
+                <div class="timeline-item-mobile" data-aos="fade-up">
+                    <div class="timeline-icon-mobile"></div>
+                    <div class="bg-slate-700 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-xl font-semibold text-sky-400 mb-1">Business Analyst</h3>
+                        <p class="text-md text-white mb-1">Swiggy</p>
+                        <p class="text-sm text-slate-400 mb-4">Jan 2022 - Oct 2023 | Bangalore</p>
+                        <ul class="list-disc list-outside text-slate-300 space-y-2 ml-5 text-sm">
+                           <li>Implemented KNN & K-means Clustering for targeted marketing.</li>
+                            <li>Deployed dish recommendation system, boosting CTR by <strong>10%</strong> & CVR by <strong>20%</strong>.</li>
+                            <li>Increased MoM new user retention by <strong>15pp</strong>.</li>
+                            <li>Reduced Incorrect Address Cancellations by <strong>14%</strong>, increasing LTV.</li>
+                            <li>Prevented <strong>₹10 Lakhs loss</strong> via RCA-driven fraud detection.</li>
+                            <li>Crafted Central Growth Summary Dashboard (<strong>1000 monthly views</strong>).</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Tredence -->
+                <div class="timeline-item-mobile" data-aos="fade-up">
+                    <div class="timeline-icon-mobile"></div>
+                    <div class="bg-slate-700 p-6 rounded-lg shadow-xl">
+                         <h3 class="text-xl font-semibold text-sky-400 mb-1">Analyst (Client Facing - US)</h3>
+                        <p class="text-md text-white mb-1">Tredence</p>
+                        <p class="text-sm text-slate-400 mb-4">Nov 2020 - Jan 2022 | Bangalore</p>
+                        <ul class="list-disc list-outside text-slate-300 space-y-2 ml-5 text-sm">
+                            <li>Boosted sales by <strong>20%</strong> for a major US fashion retailer using GLM models.</li>
+                            <li>Developed Python tool for Snowflake cost estimation & forecasting.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-16 sm:py-20">
+        <div class="container mx-auto px-6">
+            <h2 data-aos="fade-up" class="text-3xl sm:text-4xl font-bold text-center text-white mb-4">Key Achievements</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-10 sm:mb-12" data-aos="fade-up" data-aos-delay="100"></div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-slate-800 p-6 sm:p-8 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-sky-400 mr-3 sm:mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                        <h3 class="text-lg sm:text-xl font-semibold text-white">Proactive Client Service Award</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base">Awarded for being proactive and getting appreciation from clients for providing sharp actionable insights at Tredence.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-slate-800 p-6 sm:p-8 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                         <svg class="w-8 h-8 sm:w-10 sm:h-10 text-sky-400 mr-3 sm:mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697A7.5 7.5 0 0112 3a7.5 7.5 0 014.165 1.697M15 11a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <h3 class="text-lg sm:text-xl font-semibold text-white">Robust Dashboard Creation</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base">Awarded for creating a robust dashboard providing a 360° business view for Swiggy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 sm:py-20 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <h2 data-aos="fade-up" class="text-3xl sm:text-4xl font-bold text-center text-white mb-4">Academic Foundation</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-10 sm:mb-12" data-aos="fade-up" data-aos-delay="100"></div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-slate-700 p-6 sm:p-8 rounded-lg shadow-xl">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-sky-400 mb-2">B. Tech</h3>
+                    <p class="text-md sm:text-lg text-white mb-1">National Institute of Technology, Surat</p>
+                    <p class="text-slate-400 mb-1 text-sm sm:text-base">CGPA: 8.1 / 10</p>
+                    <p class="text-sm text-slate-500">Graduated: 2020</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-slate-700 p-6 sm:p-8 rounded-lg shadow-xl">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-sky-400 mb-2">HSE (Higher Secondary Education)</h3>
+                    <p class="text-md sm:text-lg text-white mb-1">Lions English School</p>
+                    <p class="text-slate-400 mb-1 text-sm sm:text-base">Percentage: 92.1 / 100</p>
+                    <p class="text-sm text-slate-500">Completed: 2015</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 sm:py-20">
+        <div class="container mx-auto px-6">
+            <h2 data-aos="fade-up" class="text-3xl sm:text-4xl font-bold text-center text-white mb-4">Let's Connect</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-10 sm:mb-12" data-aos="fade-up" data-aos-delay="100"></div>
+            <p data-aos="fade-up" data-aos-delay="200" class="text-center text-md sm:text-lg text-slate-300 mb-10 sm:mb-12 max-w-xl mx-auto">
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great. Feel free to reach out!
+            </p>
+            <div class="max-w-lg mx-auto bg-slate-800 p-6 sm:p-8 rounded-lg shadow-2xl" data-aos="fade-up" data-aos-delay="300">
+                <div class="space-y-6 text-sm sm:text-base">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-sky-400 mr-3 sm:mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <a href="mailto:iamdhananjay197@gmail.com" class="text-slate-300 hover:text-sky-400 transition break-all">iamdhananjay197@gmail.com</a>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-sky-400 mr-3 sm:mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.308 1.154a10.96 10.96 0 005.416 5.416l1.154-2.308a1 1 0 011.21-.502l4.493 1.498A1 1 0 0119 17.72V21a2 2 0 01-2 2h-.036C6.446 22.457 2 17.554 2 7.036V5z"></path></svg>
+                        <a href="tel:+918320482147" class="text-slate-300 hover:text-sky-400 transition">+91 8320482147</a>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-sky-400 mr-3 sm:mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                        <a href="https://www.linkedin.com/in/dhananjay-dadheech-850439150" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-sky-400 transition break-all">linkedin.com/in/dhananjay-dadheech</a>
+                    </div>
+                </div>
+                <!-- Optional: Contact Form (requires backend or service like Formspree) -->
+                <!-- 
+                <form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST" class="mt-8 space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-300">Full Name</label>
+                        <input type="text" name="name" id="name" required class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-white">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-300">Email Address</label>
+                        <input type="email" name="email" id="email" required class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-white">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-300">Message</label>
+                        <textarea name="message" id="message" rows="4" required class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-white"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 ease-in-out">Send Message</button>
+                    </div>
+                </form>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 text-center py-8">
+        <div class="container mx-auto px-6">
+            <p class="text-sm">© <span id="currentYear"></span> Dhananjay Dadheech. All Rights Reserved.</p>
+            <p class="text-xs mt-1">Designed & Built with <span class="text-red-500">♥</span>, Tailwind CSS, AOS & Typed.js.</p>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.0.12/dist/typed.min.js"></script>
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
